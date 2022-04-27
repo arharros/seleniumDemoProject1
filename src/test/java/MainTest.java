@@ -28,6 +28,8 @@ public class MainTest {
         Thread.sleep(3000);
         if (!classOfElement.equals("btn btn-light active")) element.click();
 
+        /*
+        //Первый вариант заполнения
         element = driver.findElement(By.xpath("//input[@id='userName']"));
         element.clear();
         element.sendKeys("Иванов Иван Иванович");
@@ -43,9 +45,20 @@ public class MainTest {
         element = driver.findElement(By.xpath("//textarea[@id='permanentAddress']"));
         element.clear();
         element.sendKeys("453118 г.Стерлитамак, ул.Сакко и Ванцетти д.3 кв.10");
-
+*/
+        //Второй вариант заполнения через создание метода
+        findTxtElementAndFill(driver, "//input[@id='userName']", "Иванов Иван Иванович");
+        findTxtElementAndFill(driver, "//input[@id='userEmail']", "ivanov@gmail.com");
+        findTxtElementAndFill(driver, "//textarea[@id='currentAddress']", "453118 г.Стерлитамак, ул.Курчатова д.6 кв.56");
+        findTxtElementAndFill(driver, "//textarea[@id='permanentAddress']", "453118 г.Стерлитамак, ул.Сакко и Ванцетти д.3 кв.10");
 
         Thread.sleep(5000);
         driver.quit();
+    }
+
+    public static void findTxtElementAndFill (WebDriver driver, String elementXpath, String textFill) {
+        WebElement element = driver.findElement(By.xpath(elementXpath));
+        element.clear();
+        element.sendKeys(textFill);
     }
 }

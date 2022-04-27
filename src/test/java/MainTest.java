@@ -14,8 +14,6 @@ public class MainTest {
         System.setProperty("webdriver.chrome.driver","E:\\JavaProject\\Tools\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-
         driver.get("https://demoqa.com/");
         Thread.sleep(3000);
         WebElement element = driver.findElement(By.xpath("(//div[@class='card mt-4 top-card'])[1]"));
